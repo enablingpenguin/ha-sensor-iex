@@ -4,6 +4,7 @@ For more details about this platform, please refer to the documentation at
 https://home-assistant.io/components/sensor.iex/
 """
 import logging
+from datetime import timedelta
 
 from homeassistant.helpers.entity import Entity
 
