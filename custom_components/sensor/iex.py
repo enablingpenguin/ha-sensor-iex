@@ -7,11 +7,15 @@ import logging
 
 from homeassistant.helpers.entity import Entity
 
+
 REQUIREMENTS = ['iexfinance==0.3.3']
+
+_LOGGER = logging.getLogger(__name__)
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the sensor platform."""
     add_devices([IEXSensor()])
+    _LOGGER.debug("Device added")
 
 
 class IEXSensor(Entity):
@@ -45,3 +49,4 @@ class IEXSensor(Entity):
         This is the only method that should fetch new data for Home Assistant.
         """
         self._state = 0
+        _LOGGER.debug("Device updated")
