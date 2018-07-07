@@ -12,6 +12,9 @@ REQUIREMENTS = ['iexfinance==0.3.3']
 
 _LOGGER = logging.getLogger(__name__)
 
+SCAN_INTERVAL = timedelta(minutes=5)
+
+
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the sensor platform."""
     add_devices([IEXSensor()])
