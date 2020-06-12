@@ -1,0 +1,6 @@
+{
+  "domain": "iex_finance",
+  "name": "IEX Finance",
+  "documentation": "https://www.home-assistant.io/integrations/iex",
+  "requirements": ["iexfinance==0.4.3"]
+}
