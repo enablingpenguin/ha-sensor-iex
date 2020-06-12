@@ -11,12 +11,11 @@ import voluptuous as vol
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import (
     ATTR_ATTRIBUTION, CONF_CURRENCY, CONF_FORCE_UPDATE, 
-    CONF_NAME)
+    CONF_NAME, CONF_API_KEY)
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
 
 REQUIREMENTS = ['iexfinance==0.4.3']
-
 _LOGGER = logging.getLogger(__name__)
 
 ATTR_CLOSE = 'close'
@@ -66,12 +65,12 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
         vol.All(cv.ensure_list, [SYMBOL_SCHEMA]),
 })
 
-os.environ['IEX_TOKEN'] = config[CONF_API_KEY]
-
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the sensor platform."""
     from iexfinance.refdata import get_symbols
     from iexfinance.stocks import Stock
+	
+    os.environ['IEX_TOKEN'] = config.get(CONF_API_KEY)
 
     avail = get_symbols()
 
